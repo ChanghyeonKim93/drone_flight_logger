@@ -1,0 +1,15 @@
+<launch>
+    <arg name="current_pose_topic_name" default="/measurement_selection/pose"/>
+    <arg name="truth_pose_topic_name"   default="/vicon/CHK_M100/CHK_M100"/>
+    <arg name="desired_topic_name"      default="/gcs/setpoint_raw/position"/>
+    <arg name="vo_pose_topic_name"   default="/sgpvo/pose"/>
+    <arg name="save_dir"   default="/home/icslkchlap/flight_save/"/>
+
+    <node pkg="drone_flight_logger" name="drone_flight_logger_node" type="drone_flight_logger_node">
+        <param name="current_pose_topic_name" type="string" value="$(arg current_pose_topic_name)"/>
+        <param name="truth_pose_topic_name" type="string" value="$(arg truth_pose_topic_name)"/>
+        <param name="desired_topic_name" type="string" value="$(arg desired_topic_name)"/>
+        <param name="vo_pose_topic_name" type="string" value="$(arg vo_pose_topic_name)"/>
+	<param name="folder_dir" type="string" value="$(arg save_dir)"/>
+    </node>
+</launch>
